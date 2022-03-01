@@ -117,10 +117,14 @@ const countMoney = (amount) => {
 
 const deleteTransaction = (id) => {
 	const transactionToDelete = document.getElementById(id);
-	const transactionValue = parseFloat(transactionToDelete.childNodes[3].innerText);
+	const transactionValue = parseFloat(
+		transactionToDelete.childNodes[3].innerText
+	);
 	const indexOfTransaction = moneyArr.indexOf(transactionValue);
 
-	transactionToDelete.classList.contains('income') ? incomeSection.removeChild(transactionToDelete) : expansesSection.removeChild(transactionToDelete)
+	transactionToDelete.classList.contains('income')
+		? incomeSection.removeChild(transactionToDelete)
+		: expansesSection.removeChild(transactionToDelete);
 
 	moneyArr.splice(indexOfTransaction, 1);
 	countMoney(moneyArr);
@@ -131,11 +135,23 @@ const deleteAllTransaction = () => {
 	expansesSection.innerHTML = '<h3>Wydatki:</h3>';
 	availableMoney.textContent = '0zł';
 	moneyArr = [0];
-}
+};
 
+const lightModeOn = () => {
+	root.style.setProperty('--first-color', '#F9F9F9');
+	root.style.setProperty('--second-color', '#14161F');
+	root.style.setProperty('--border-color', 'rgba(0, 0, 0, .2)');
+};
 
+const darkModeOn = () => {
+	root.style.setProperty('--first-color', '#14161F');
+	root.style.setProperty('--second-color', '#F9F9F9');
+	root.style.setProperty('--border-color', 'rgba(255, 255, 255, .42)');
+};
 
 addTransactionBtn.addEventListener('click', showPanel);
 cancelTransactionBtn.addEventListener('click', hidePanel);
 saveTransactionBtn.addEventListener('click', checkForm);
-deleteAllBtn.addEventListener('click', deleteAllTransaction)
+deleteAllBtn.addEventListener('click', deleteAllTransaction);
+lightMode.addEventListener('click', lightModeOn);
+darkMode.addEventListener('click', darkModeOn);
