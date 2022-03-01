@@ -126,6 +126,14 @@ const deleteTransaction = (id) => {
 	countMoney(moneyArr);
 };
 
+const deleteAllTransaction = () => {
+	incomeSection.innerHTML = '<h3>Przychód:</h3>';
+	expansesSection.innerHTML = '<h3>Wydatki:</h3>';
+	availableMoney.textContent = '0zł'
+
+}
+
 addTransactionBtn.addEventListener('click', showPanel);
 cancelTransactionBtn.addEventListener('click', hidePanel);
 saveTransactionBtn.addEventListener('click', checkForm);
+deleteAllBtn.addEventListener('click', deleteAllTransaction)
