@@ -40,7 +40,7 @@ const checkForm = () => {
 		transactionAmount !== '' &&
 		transactionCategory.value !== 'none'
 	) {
-		createNewTransaction()
+		createNewTransaction();
 	} else {
 		alert('Wypełnij wszystkie pola!');
 	}
@@ -80,8 +80,8 @@ const createNewTransaction = () => {
 		newTransaction.classList.add('expanses');
 	}
 
-
-	moneyArr.push(parseFloat(transactionAmount.value))
+	moneyArr.push(parseFloat(transactionAmount.value));
+	countMoney(moneyArr);
 
 	hidePanel();
 	ID++;
@@ -89,10 +89,9 @@ const createNewTransaction = () => {
 };
 
 const selectCategory = () => {
-	selectedCategory = transactionCategory.options[transactionCategory.selectedIndex].text;
-}
-
-
+	selectedCategory =
+		transactionCategory.options[transactionCategory.selectedIndex].text;
+};
 
 const checkCategory = (transaction) => {
 	switch (transaction) {
@@ -109,6 +108,11 @@ const checkCategory = (transaction) => {
 			categoryIcon = '<i class="fas fa-film"></i>';
 			break;
 	}
+};
+
+const countMoney = (amount) => {
+	const newAmount = amount.reduce((a, b) => a + b);
+	availableMoney.textContent = `${newAmount} zł`;
 };
 
 addTransactionBtn.addEventListener('click', showPanel);
