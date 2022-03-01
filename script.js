@@ -129,9 +129,11 @@ const deleteTransaction = (id) => {
 const deleteAllTransaction = () => {
 	incomeSection.innerHTML = '<h3>Przychód:</h3>';
 	expansesSection.innerHTML = '<h3>Wydatki:</h3>';
-	availableMoney.textContent = '0zł'
-
+	availableMoney.textContent = '0zł';
+	moneyArr = [0];
 }
+
+
 
 addTransactionBtn.addEventListener('click', showPanel);
 cancelTransactionBtn.addEventListener('click', hidePanel);
