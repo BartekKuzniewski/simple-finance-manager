@@ -115,6 +115,17 @@ const countMoney = (amount) => {
 	availableMoney.textContent = `${newAmount} zł`;
 };
 
+const deleteTransaction = (id) => {
+	const transactionToDelete = document.getElementById(id);
+	const transactionValue = parseFloat(transactionToDelete.childNodes[3].innerText);
+	const indexOfTransaction = moneyArr.indexOf(transactionValue);
+
+	transactionToDelete.classList.contains('income') ? incomeSection.removeChild(transactionToDelete) : expansesSection.removeChild(transactionToDelete)
+
+	moneyArr.splice(indexOfTransaction, 1);
+	countMoney(moneyArr);
+};
+
 addTransactionBtn.addEventListener('click', showPanel);
 cancelTransactionBtn.addEventListener('click', hidePanel);
 saveTransactionBtn.addEventListener('click', checkForm);
